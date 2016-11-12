@@ -13,7 +13,7 @@ module MItamae
             run_specinfra(:change_file_owner, desired.path, desired.owner, desired.group)
           end
         else
-          if FileTest.directory?(desired.path)
+          if run_specinfra(:check_file_is_directory, desired.path)
             run_specinfra(:remove_file, desired.path)
           end
         end
